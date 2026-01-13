@@ -8,7 +8,7 @@ document.addEventListener('mousemove', (e) => {
         y: e.clientY,
         duration: 0.1
     });
-    
+
     gsap.to(cursorFollower, {
         x: e.clientX,
         y: e.clientY,
@@ -35,6 +35,11 @@ linkHover.forEach(link => {
     });
 });
 
+// Ensure ScrollTrigger refreshes after all assets are loaded
+window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+});
+
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,44 +53,44 @@ tl.to('.hero-title', {
     ease: "power4.out",
     delay: 0.5
 })
-.to('.hero-subtitle', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power3.out"
-}, "-=0.5")
-.to('.hero-tagline', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power3.out"
-}, "-=0.7")
-.to('.cta-group', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power3.out"
-}, "-=0.7");
+    .to('.hero-subtitle', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.5")
+    .to('.hero-tagline', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.7")
+    .to('.cta-group', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.7");
 
 // Section Headers Reveal
 gsap.utils.toArray('.section-header').forEach(header => {
     const line = header.querySelector('.line');
-    
+
     gsap.from(header, {
         scrollTrigger: {
             trigger: header,
-            start: "top 80%",
+            start: "top 85%", // Made slightly more lenient
             toggleActions: "play none none reverse"
         },
         opacity: 0,
         y: 30,
         duration: 0.8
     });
-    
+
     gsap.to(line, {
         scrollTrigger: {
             trigger: header,
-            start: "top 80%",
+            start: "top 85%",
         },
         scaleX: 1,
         duration: 1,
@@ -97,7 +102,7 @@ gsap.utils.toArray('.section-header').forEach(header => {
 gsap.from('.block-reveal', {
     scrollTrigger: {
         trigger: '#about',
-        start: "top 70%",
+        start: "top 75%",
     },
     opacity: 0,
     y: 50,
@@ -109,7 +114,7 @@ gsap.utils.toArray('.job-card').forEach((card, i) => {
     gsap.to(card, {
         scrollTrigger: {
             trigger: card,
-            start: "top 85%",
+            start: "top 90%", // Increased leniency
         },
         opacity: 1,
         x: 0,
@@ -122,7 +127,7 @@ gsap.utils.toArray('.job-card').forEach((card, i) => {
 gsap.from('.skill-category', {
     scrollTrigger: {
         trigger: '#skills',
-        start: "top 80%",
+        start: "top 85%",
     },
     y: 50,
     opacity: 0,
@@ -135,7 +140,7 @@ gsap.from('.skill-category', {
 gsap.from('.achievement-item', {
     scrollTrigger: {
         trigger: '#achievements',
-        start: "top 80%",
+        start: "top 85%",
     },
     y: 30,
     opacity: 0,
@@ -147,7 +152,7 @@ gsap.from('.achievement-item', {
 gsap.from('.edu-card', {
     scrollTrigger: {
         trigger: '#education',
-        start: "top 80%",
+        start: "top 85%",
     },
     scale: 0.9,
     opacity: 0,
@@ -159,7 +164,7 @@ gsap.from('.edu-card', {
 gsap.from('.contact-card', {
     scrollTrigger: {
         trigger: '#contact',
-        start: "top 80%",
+        start: "top 90%", // Made triggers more lenient to ensure visibility
     },
     y: 30,
     opacity: 0,
