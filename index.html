@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmol Limje | Mobile Application Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
+
+    <nav>
+        <div class="logo">AL</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Anmol <span class="accent">Limje</span></h1>
+                <h2 class="hero-subtitle">Mobile Application Developer</h2>
+                <p class="hero-tagline">Building robust cross-platform apps with Flutter & Native Technologies</p>
+                <div class="cta-group">
+                    <a href="#contact" class="btn primary">Get in Touch</a>
+                    <a href="#experience" class="btn secondary">View Work</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Abstract geometric shape handled by CSS/JS -->
+                <div class="shape"></div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <h2>Professional Overview</h2>
+                <div class="line"></div>
+            </div>
+            <div class="content block-reveal">
+                <p>
+                    Experienced Mobile Application Developer with <strong>6+ years</strong> of expertise in building
+                    cross-platform apps using Flutter and native Android/iOS for domains like healthcare, education,
+                    productivity, and event management.
+                </p>
+                <p>
+                    Proficient in state management (GetX, Provider, Bloc), MVVM/Clean Architecture, and testing
+                    methodologies. Skilled in integrating REST APIs, WebSocket, payment gateways, and SDKs such as
+                    Firebase, AWS Amplify, Branch IO, One Signal, and Agora. Adept at deploying secure, scalable
+                    applications on AWS and delivering high-impact projects including Ayushman Bharat Digital Mission.
+                </p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+                <div class="line"></div>
+            </div>
+            <div class="timeline">
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Specialist – Software Engineering</h3>
+                        <span class="company">LTIMindtree, Pune</span>
+                        <span class="date">Dec 2023 – Present</span>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed <strong>ABHA</strong> and <strong>Aarogya Setu 2.0</strong> mobile and web
+                            applications under the Ayushman Bharat Digital Mission (ABDM) for the National Health
+                            Authority using Flutter.</li>
+                        <li>Implemented state management with GetX, Go Router for navigation, Dio for network calls and
+                            SSL/TLS Pinning.</li>
+                        <li>Integrated REST APIs and STOMP WebSocket for real-time communication, MapMyIndia and Digi
+                            Locker APIs. Created plugins for Aadhaar Face RD Service.</li>
+                        <li>Utilized Firebase for analytics, crash reporting, and deep linking; incorporated Health
+                            Connect for user health insights.</li>
+                        <li>Delivered government-grade applications emphasizing security, interoperability, and
+                            scalability.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Software Developer</h3>
+                        <span class="company">Mobile Programing LLC, Pune</span>
+                        <span class="date">July 2023 – Nov 2023</span>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed "Meet Pandora," a Flutter-based wellness application targeting students aged 18–25
+                            for mental health tracking.</li>
+                        <li>Implemented state management using GetX and integrated AWS Amplify SDK for full-stack
+                            development.</li>
+                        <li>Integrated Health Connect library to capture and analyze health metrics.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Android App Developer</h3>
+                        <span class="company">Piexxi Technology LLP, Nagpur</span>
+                        <span class="date">Nov 2021 – April 2023</span>
+                    </div>
+                    <ul class="job-details">
+                        <li>Designed and developed multiple mobile applications including NowZone (Health), Uniconnect
+                            (Education), All Pass (Events), PCards (Productivity), and Flash Liquor (Billing).</li>
+                        <li>Implemented backend services using .NET Web API in C#, configured Windows Server
+                            environments.</li>
+                        <li>Contributed to computer vision projects using Python/OpenCV for live stream and object
+                            detection.</li>
+                        <li>Delivered end-to-end solutions integrating cross-platform mobile development with backend
+                            systems.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Full Stack Developer</h3>
+                        <span class="company">4i Softwares Pvt. Ltd, Nagpur</span>
+                        <span class="date">Oct 2020 – Oct 2021</span>
+                    </div>
+                    <ul class="job-details">
+                        <li>Managed end-to-end development of Android applications including IClass, Vivanta, and OPD
+                            Timer.</li>
+                        <li>Developed mobile apps using Kotlin/Java and web/APIs using PHP 7.4 and .NET.</li>
+                        <li>Integrated secure audio/video conferencing in IClass, deployed on AWS/VPS.</li>
+                        <li>Designed UI/UX prototypes using Adobe XD and Figma.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Software Developer</h3>
+                        <span class="company">Electus Technologies Pvt. Ltd, Nagpur</span>
+                        <span class="date">Mar 2018 – Aug 2020</span>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed custom desktop applications in .NET (Data Logger, Spectro Report with OCR).</li>
+                        <li>Engineered embedded code for hardware-software integration (Autonomous chess bot with
+                            Raspberry Pi).</li>
+                        <li>Built computer vision applications using OpenCV.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <div class="line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Core</h3>
+                    <div class="tags">
+                        <span>Flutter</span>
+                        <span>Dart</span>
+                        <span>Android (Native)</span>
+                        <span>iOS (Native)</span>
+                        <span>Kotlin/Java</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Architecture & State</h3>
+                    <div class="tags">
+                        <span>GetX</span>
+                        <span>Provider</span>
+                        <span>Bloc</span>
+                        <span>MVVM</span>
+                        <span>Clean Architecture</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Cloud</h3>
+                    <div class="tags">
+                        <span>Rest APIs</span>
+                        <span>Firebase</span>
+                        <span>AWS Amplify</span>
+                        <span>WebSocket</span>
+                        <span>.NET Web API</span>
+                        <span>PHP</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Integrations</h3>
+                    <div class="tags">
+                        <span>Git</span>
+                        <span>Figma/Adobe XD</span>
+                        <span>MapMyIndia</span>
+                        <span>Digi Locker</span>
+                        <span>Health Connect</span>
+                        <span>OpenCV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="section-header">
+                <h2>Achievements</h2>
+                <div class="line"></div>
+            </div>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <span class="icon">🏆</span>
+                    <div class="text">
+                        <h4>LTIM Trailblazer SQUAD – 2025</h4>
+                        <p>LTIMindtree Award</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <span class="icon">🌟</span>
+                    <div class="text">
+                        <h4>Best Performer of the Year (2022-2023)</h4>
+                        <p>Piexxi Technology LLP</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <span class="icon">🥇</span>
+                    <div class="text">
+                        <h4>1st Rank at IIT – IRC (2017-2018) & Maze Runner (2016)</h4>
+                        <p>Techfest Competitions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="section-header">
+                <h2>Education</h2>
+                <div class="line"></div>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3>Master’s degree - MCM</h3>
+                    <p>Hislop College, RTMNU University</p>
+                    <span class="year">2020</span>
+                    <span class="grade">9 CGPA</span>
+                </div>
+                <div class="edu-card">
+                    <h3>PG Diploma – PGDCCA</h3>
+                    <p>Hislop College, RTMNU University</p>
+                    <span class="year">2019</span>
+                    <span class="grade">8.54 CGPA</span>
+                </div>
+                <div class="edu-card">
+                    <h3>Bachelor’s degree - BCCA</h3>
+                    <p>Hislop College, RTMNU University</p>
+                    <span class="year">2018</span>
+                    <span class="grade">62%</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <h2>Contact Me</h2>
+                <div class="line"></div>
+            </div>
+            <div class="contact-container">
+                <a href="tel:91-800-752-7753" class="contact-card">
+                    <span class="label">Phone</span>
+                    <span class="value">91-800-752-7753</span>
+                </a>
+                <a href="mailto:Limje.anmol31@gmail.com" class="contact-card">
+                    <span class="label">Email</span>
+                    <span class="value">Limje.anmol31@gmail.com</span>
+                </a>
+                <a href="https://Linkedin.com/in/anmol-limje-a3a8544a4" target="_blank" class="contact-card">
+                    <span class="label">LinkedIn</span>
+                    <span class="value">anmol-limje-a3a854a4</span>
+                </a>
+                <div class="contact-card">
+                    <span class="label">Location</span>
+                    <span class="value">Nagpur, MH 440013</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Anmol Limje.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
