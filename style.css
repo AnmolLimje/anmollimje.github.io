@@ -52,7 +52,10 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     color: #fff;
     font-weight: 700;
 }
@@ -123,14 +126,16 @@ nav {
     font-size: 5rem;
     line-height: 1.1;
     margin-bottom: 1rem;
-    opacity: 0; /* Animated in JS */
+    opacity: 0;
+    /* Animated in JS */
     transform: translateY(30px);
 }
 
 .hero-title .accent {
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text; /* Standard property for compatibility */
-    background-clip: text; 
+    -webkit-background-clip: text;
+    /* Standard property for compatibility */
+    background-clip: text;
     background-image: var(--gradient-1);
 }
 
@@ -199,15 +204,22 @@ nav {
 .shape {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0,255,242,0.1) 0%, rgba(5,5,5,0) 70%);
+    background: radial-gradient(circle, rgba(0, 255, 242, 0.1) 0%, rgba(5, 5, 5, 0) 70%);
     filter: blur(50px);
     border-radius: 50%;
     animation: pulse 5s infinite alternate;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.3; transform: scale(1); }
-    100% { opacity: 0.6; transform: scale(1.1); }
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
 }
 
 /* Common Section Styles */
@@ -235,7 +247,8 @@ section {
     background: var(--accent);
     margin-top: 10px;
     transform-origin: left;
-    transform: scaleX(0); /* Animated */
+    transform: scaleX(0);
+    /* Animated */
 }
 
 /* About Section */
@@ -264,7 +277,8 @@ section {
     margin-bottom: 3rem;
     position: relative;
     padding-left: 2rem;
-    opacity: 0; /* Scroll reveal */
+    opacity: 0;
+    /* Scroll reveal */
     transform: translateX(-20px);
 }
 
@@ -446,7 +460,7 @@ section {
     border-radius: 15px;
     border: var(--card-border);
     text-align: center;
-    transition: 0.3s;
+    transition: background 0.3s, border-color 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -486,26 +500,28 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Simplify for now, could add hamburger */
+        display: none;
+        /* Simplify for now, could add hamburger */
     }
-    
+
     .hero-title {
         font-size: 3.5rem;
     }
-    
+
     #hero {
         padding: 0 5%;
         text-align: center;
         justify-content: center;
     }
-    
+
     .hero-content {
         align-items: center;
         display: flex;
         flex-direction: column;
     }
-    
+
     .hero-visual {
-        display: none; /* Hide abstract shape on mobile to save space */
+        display: none;
+        /* Hide abstract shape on mobile to save space */
     }
 }

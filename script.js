@@ -163,8 +163,8 @@ gsap.from('.edu-card', {
 // Contact Cards
 gsap.from('.contact-card', {
     scrollTrigger: {
-        trigger: '#contact',
-        start: "top 90%", // Made triggers more lenient to ensure visibility
+        trigger: '.contact-container',
+        start: "top 85%",
     },
     y: 30,
     opacity: 0,
