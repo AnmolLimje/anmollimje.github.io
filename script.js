@@ -632,6 +632,7 @@ if (terminalForm && terminalInput && terminalOutput) {
             "  • 'experience'- Display story quests & work history",
             "  • 'projects'  - View landmark project raids (ABHA, Pandora, etc.)",
             "  • 'skills'    - Query RPG skill tree abilities",
+            "  • 'certs'     - Verify official Anthropic Claude Developer credential",
             "  • 'awards'    - Open trophy room accolades",
             "  • 'contact'   - Display transmission communication channels",
             "  • 'hire'      - Initialize recruitment summon protocol",
@@ -641,9 +642,10 @@ if (terminalForm && terminalInput && terminalOutput) {
         about: () => [
             "============================================================",
             "ANMOL LIMJE // LEAD MOBILE APPLICATION ARCHITECT",
-            "Experience: 7.5+ Years | Scale: Millions of Citizens",
-            "Specialization: Flutter, Native Android/iOS, Bloc, GetX, AI Tools",
+            "Experience: 8.4+ Years | Scale: Millions of Citizens",
+            "Specialization: Flutter, Native Android/iOS, Claude AI / MCP, Bloc, GetX",
             "ABDM National Health Ecosystem Lead (ABHA, Aarogya Setu 2.0)",
+            "Claude Certified Developer – Foundations (Anthropic)",
             "============================================================"
         ],
         experience: () => [
@@ -663,12 +665,30 @@ if (terminalForm && terminalInput && terminalOutput) {
         ],
         skills: () => [
             "• Mobile: Flutter, Dart, Native Android (Kotlin/Java), iOS (Swift)",
+            "• AI & Agentic: Claude API, Claude Code, MCP Servers, Gemini, Prompt Eng",
             "• State: Bloc Pattern, GetX, Provider, Clean Architecture, MVVM",
             "• Backend: REST, STOMP WebSockets, Firebase, AWS Amplify, GCP, .NET Web API",
-            "• AI & Vision: Antigravity/Gemini, GitHub Copilot, Cursor, OpenCV Object Recognition",
             "• Plugins: Aadhaar Face RD Service, DigiLocker, Health Connect, MapMyIndia"
         ],
+        certs: () => [
+            "============================================================",
+            "🛡️ OFFICIAL INDUSTRY CREDENTIAL VERIFICATION",
+            "Certification: Claude Certified Developer – Foundations",
+            "Issuing Body: Anthropic (via Credly)",
+            "Credential ID: 5a2e301f-1d80-424d-bb34-4042f22abdc8",
+            "Verification URL: https://www.credly.com/badges/5a2e301f-1d80-424d-bb34-4042f22abdc8/public_url",
+            "Core Skills: Claude API, Claude Code, MCP Servers, Autonomous Agents",
+            "============================================================"
+        ],
+        claude: () => [
+            "⭐ ANTHROPIC CLAUDE CERTIFIED DEVELOPER",
+            "Credential: Claude Certified Developer – Foundations",
+            "Verification URL: https://www.credly.com/badges/5a2e301f-1d80-424d-bb34-4042f22abdc8/public_url",
+            "Status: Valid & Verified via Credly"
+        ],
         awards: () => [
+            "🛡️ Claude Certified Developer – Foundations (Anthropic • Credly ID: 5a2e301f)",
+            "🏆 LTIM Pioneer SQUAD – 2026 (LTIMindtree Elite Award)",
             "🏆 LTIM Trailblazer SQUAD – 2025 (LTIMindtree Elite Award)",
             "⭐ Best Performer of the Year 2022-2023 (Piexxi Technology LLP)",
             "🎖️ Best Performer of the Month x2 (Piexxi Technology LLP)",
@@ -766,20 +786,28 @@ window.addEventListener('keydown', (e) => {
 
 // ================= 9. GSAP SCROLL TRIGGERS & ANIMATIONS =================
 if (typeof gsap !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
 
+    // Use safe animation with immediateRender: false so content is never stuck invisible
     gsap.utils.toArray('.cyber-section').forEach(sec => {
-        gsap.from(sec.querySelectorAll('.section-title-wrap, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card'), {
+        const animTargets = sec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card');
+        if (animTargets.length === 0) return;
+
+        gsap.from(animTargets, {
             scrollTrigger: {
                 trigger: sec,
-                start: "top 85%",
-                toggleActions: "play none none none"
+                start: "top 95%",
+                toggleActions: "play none none none",
+                onEnter: () => gsap.set(animTargets, { opacity: 1, y: 0, clearProps: "opacity,transform" })
             },
-            y: 30,
+            y: 20,
             opacity: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: "power2.out"
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            immediateRender: false // CRITICAL: Prevents elements from being stuck with opacity:0 before/if trigger fires
         });
     });
 
@@ -789,11 +817,70 @@ if (typeof gsap !== 'undefined') {
         gsap.to(bar, {
             scrollTrigger: {
                 trigger: bar,
-                start: "top 92%",
+                start: "top 95%",
             },
             width: targetWidth,
             duration: 1.1,
             ease: "power2.out"
         });
+    });
+
+    // Refresh ScrollTrigger and reveal any target section when nav link is clicked
+    document.querySelectorAll('.hud-link, a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetSec = document.querySelector(href);
+                if (targetSec) {
+                    const cards = targetSec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card');
+                    if (cards.length > 0) {
+                        cards.forEach(c => {
+                            c.style.opacity = '1';
+                            c.style.transform = 'none';
+                        });
+                        gsap.set(cards, { opacity: 1, y: 0, clearProps: "opacity,transform" });
+                    }
+                }
+            }
+            if (typeof ScrollTrigger !== 'undefined') {
+                setTimeout(() => ScrollTrigger.refresh(), 300);
+            }
+        });
+    });
+
+    // Safety fallback: ensure all critical content is 100% visible after window loads or if hash present
+    window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+        if (window.location.hash) {
+            const hashSec = document.querySelector(window.location.hash);
+            if (hashSec) {
+                const elements = hashSec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card');
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }
+        }
+    });
+}
+
+// ================= 10. CLAUDE CERTIFICATION 3D PARALLAX TILT =================
+const certCard = document.getElementById('claude-cert-card');
+if (certCard) {
+    certCard.addEventListener('mousemove', (e) => {
+        const rect = certCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        certCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+    });
+
+    certCard.addEventListener('mouseleave', () => {
+        certCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
 }
