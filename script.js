@@ -785,20 +785,28 @@ window.addEventListener('keydown', (e) => {
 
 // ================= 9. GSAP SCROLL TRIGGERS & ANIMATIONS =================
 if (typeof gsap !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
 
+    // Use safe animation with immediateRender: false so content is never stuck invisible
     gsap.utils.toArray('.cyber-section').forEach(sec => {
-        gsap.from(sec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card'), {
+        const animTargets = sec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card');
+        if (animTargets.length === 0) return;
+
+        gsap.from(animTargets, {
             scrollTrigger: {
                 trigger: sec,
-                start: "top 85%",
-                toggleActions: "play none none none"
+                start: "top 95%",
+                toggleActions: "play none none none",
+                onEnter: () => gsap.set(animTargets, { opacity: 1, y: 0, clearProps: "opacity,transform" })
             },
-            y: 30,
+            y: 20,
             opacity: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: "power2.out"
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            immediateRender: false // CRITICAL: Prevents elements from being stuck with opacity:0 before/if trigger fires
         });
     });
 
@@ -808,12 +816,52 @@ if (typeof gsap !== 'undefined') {
         gsap.to(bar, {
             scrollTrigger: {
                 trigger: bar,
-                start: "top 92%",
+                start: "top 95%",
             },
             width: targetWidth,
             duration: 1.1,
             ease: "power2.out"
         });
+    });
+
+    // Refresh ScrollTrigger and reveal any target section when nav link is clicked
+    document.querySelectorAll('.hud-link, a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetSec = document.querySelector(href);
+                if (targetSec) {
+                    const cards = targetSec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card');
+                    if (cards.length > 0) {
+                        cards.forEach(c => {
+                            c.style.opacity = '1';
+                            c.style.transform = 'none';
+                        });
+                        gsap.set(cards, { opacity: 1, y: 0, clearProps: "opacity,transform" });
+                    }
+                }
+            }
+            if (typeof ScrollTrigger !== 'undefined') {
+                setTimeout(() => ScrollTrigger.refresh(), 300);
+            }
+        });
+    });
+
+    // Safety fallback: ensure all critical content is 100% visible after window loads or if hash present
+    window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+        if (window.location.hash) {
+            const hashSec = document.querySelector(window.location.hash);
+            if (hashSec) {
+                const elements = hashSec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card');
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }
+        }
     });
 }
 

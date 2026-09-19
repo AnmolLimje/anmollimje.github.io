@@ -2250,6 +2250,10 @@ main#main-viewport {
     gap: 1rem;
     transition: all 0.3s ease;
     min-height: 64px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 1;
 }
 
 .comms-card:hover, .comms-card:active {
