@@ -632,6 +632,7 @@ if (terminalForm && terminalInput && terminalOutput) {
             "  • 'experience'- Display story quests & work history",
             "  • 'projects'  - View landmark project raids (ABHA, Pandora, etc.)",
             "  • 'skills'    - Query RPG skill tree abilities",
+            "  • 'certs'     - Verify official Anthropic Claude Developer credential",
             "  • 'awards'    - Open trophy room accolades",
             "  • 'contact'   - Display transmission communication channels",
             "  • 'hire'      - Initialize recruitment summon protocol",
@@ -641,9 +642,10 @@ if (terminalForm && terminalInput && terminalOutput) {
         about: () => [
             "============================================================",
             "ANMOL LIMJE // LEAD MOBILE APPLICATION ARCHITECT",
-            "Experience: 7.5+ Years | Scale: Millions of Citizens",
-            "Specialization: Flutter, Native Android/iOS, Bloc, GetX, AI Tools",
+            "Experience: 8.4+ Years | Scale: Millions of Citizens",
+            "Specialization: Flutter, Native Android/iOS, Claude AI / MCP, Bloc, GetX",
             "ABDM National Health Ecosystem Lead (ABHA, Aarogya Setu 2.0)",
+            "Claude Certified Developer – Foundations (Anthropic)",
             "============================================================"
         ],
         experience: () => [
@@ -663,12 +665,29 @@ if (terminalForm && terminalInput && terminalOutput) {
         ],
         skills: () => [
             "• Mobile: Flutter, Dart, Native Android (Kotlin/Java), iOS (Swift)",
+            "• AI & Agentic: Claude API, Claude Code, MCP Servers, Gemini, Prompt Eng",
             "• State: Bloc Pattern, GetX, Provider, Clean Architecture, MVVM",
             "• Backend: REST, STOMP WebSockets, Firebase, AWS Amplify, GCP, .NET Web API",
-            "• AI & Vision: Antigravity/Gemini, GitHub Copilot, Cursor, OpenCV Object Recognition",
             "• Plugins: Aadhaar Face RD Service, DigiLocker, Health Connect, MapMyIndia"
         ],
+        certs: () => [
+            "============================================================",
+            "🛡️ OFFICIAL INDUSTRY CREDENTIAL VERIFICATION",
+            "Certification: Claude Certified Developer – Foundations",
+            "Issuing Body: Anthropic (via Credly)",
+            "Credential ID: 5a2e301f-1d80-424d-bb34-4042f22abdc8",
+            "Verification URL: https://www.credly.com/badges/5a2e301f-1d80-424d-bb34-4042f22abdc8/public_url",
+            "Core Skills: Claude API, Claude Code, MCP Servers, Autonomous Agents",
+            "============================================================"
+        ],
+        claude: () => [
+            "⭐ ANTHROPIC CLAUDE CERTIFIED DEVELOPER",
+            "Credential: Claude Certified Developer – Foundations",
+            "Verification URL: https://www.credly.com/badges/5a2e301f-1d80-424d-bb34-4042f22abdc8/public_url",
+            "Status: Valid & Verified via Credly"
+        ],
         awards: () => [
+            "🛡️ Claude Certified Developer – Foundations (Anthropic • Credly ID: 5a2e301f)",
             "🏆 LTIM Trailblazer SQUAD – 2025 (LTIMindtree Elite Award)",
             "⭐ Best Performer of the Year 2022-2023 (Piexxi Technology LLP)",
             "🎖️ Best Performer of the Month x2 (Piexxi Technology LLP)",
@@ -769,7 +788,7 @@ if (typeof gsap !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.utils.toArray('.cyber-section').forEach(sec => {
-        gsap.from(sec.querySelectorAll('.section-title-wrap, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card'), {
+        gsap.from(sec.querySelectorAll('.section-title-wrap, .cert-spotlight-card, .quest-card, .project-card, .skill-branch, .trophy-card, .edu-holo-card, .comms-card'), {
             scrollTrigger: {
                 trigger: sec,
                 start: "top 85%",
@@ -795,5 +814,24 @@ if (typeof gsap !== 'undefined') {
             duration: 1.1,
             ease: "power2.out"
         });
+    });
+}
+
+// ================= 10. CLAUDE CERTIFICATION 3D PARALLAX TILT =================
+const certCard = document.getElementById('claude-cert-card');
+if (certCard) {
+    certCard.addEventListener('mousemove', (e) => {
+        const rect = certCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        certCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+    });
+
+    certCard.addEventListener('mouseleave', () => {
+        certCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
 }
