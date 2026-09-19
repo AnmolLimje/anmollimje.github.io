@@ -688,6 +688,7 @@ if (terminalForm && terminalInput && terminalOutput) {
         ],
         awards: () => [
             "🛡️ Claude Certified Developer – Foundations (Anthropic • Credly ID: 5a2e301f)",
+            "🏆 LTIM Pioneer SQUAD – 2026 (LTIMindtree Elite Award)",
             "🏆 LTIM Trailblazer SQUAD – 2025 (LTIMindtree Elite Award)",
             "⭐ Best Performer of the Year 2022-2023 (Piexxi Technology LLP)",
             "🎖️ Best Performer of the Month x2 (Piexxi Technology LLP)",
